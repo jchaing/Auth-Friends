@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Login = () => {
+const Login = props => {
   const [credentials, setCredentials] = useState({
     username: '',
     password: ''
@@ -17,11 +17,13 @@ const Login = () => {
 
   const login = e => {
     e.preventDefault();
+    console.log(props);
     axios
       .post('http://localhost:5000/api/login', credentials)
       .then(res => {
         console.log('Login.js login: res', res);
         localStorage.setItem('token', res.data.payload);
+        props.history.push('/protected');
       })
       .catch(err => console.log('Login.js error: ', err));
   };
