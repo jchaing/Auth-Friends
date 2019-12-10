@@ -18,14 +18,12 @@ function App() {
             <Link to="/protected">Protected Page</Link>
           </li>
         </ul>
-        <header className="App-header">
           <h1>Auth Friends</h1>
           <Switch>
             <PrivateRoute exact path="/protected" component={FriendsList} />
             <Route path="/login" component={Login} />
             <Route component={Login} />
           </Switch>
-        </header>
       </div>
     </Router>
   );
